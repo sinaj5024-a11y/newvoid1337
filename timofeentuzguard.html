@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Личный кабинет — VoidWare</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .profile-page{padding:120px 20px 90px}
+    .profile-wrap{width:min(820px,100%);margin:0 auto}
+    .profile-head{text-align:center;margin-bottom:34px}
+    .profile-head h1{font-size:clamp(34px,5vw,54px);letter-spacing:-.05em;margin:8px 0 10px}
+    .profile-head p{color:var(--muted,#9293a1);line-height:1.6}
+    .profile-card{padding:30px;border:1px solid var(--border,rgba(255,255,255,.1));background:var(--card,rgba(255,255,255,.035));border-radius:22px;box-shadow:0 20px 70px rgba(0,0,0,.22)}
+    .profile-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--border,rgba(255,255,255,.08))}
+    .profile-row:last-child{border-bottom:0}
+    .profile-label{color:var(--muted,#858692);font-size:14px}
+    .profile-value{font-weight:750;text-align:right}
+    .profile-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:24px}
+    .logout{background:transparent;border:1px solid rgba(255,255,255,.1);color:#aaa;border-radius:12px;padding:11px 17px;font:inherit;font-weight:700;cursor:pointer;transition:.2s}
+    .logout:hover{color:#ff9292;border-color:rgba(255,80,80,.25);background:rgba(255,80,80,.06)}
+    .profile-note{margin-top:20px;text-align:center;color:#666772;font-size:12px}
+    .profile-versions{margin-top:72px}
+    .profile-versions-head{margin-bottom:28px}
+    .profile-versions-head h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.04em;margin:8px 0 10px}
+    .version-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .version-item{padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .version-item strong{font-size:20px;letter-spacing:-.02em}
+    .version-item p{margin:6px 0 0;color:var(--muted,#9293a1);font-size:13px}
+    .version-item .badge{margin-left:9px;vertical-align:middle}
+    .version-download{white-space:nowrap}
+    @media(max-width:700px){.version-list{grid-template-columns:1fr}.version-item{align-items:flex-start;flex-direction:column}.version-download{width:100%;justify-content:center}}
+    @media(max-width:600px){.profile-card{padding:22px}.profile-row{align-items:flex-start;flex-direction:column;gap:7px}.profile-value{text-align:left}.profile-actions{flex-direction:column;align-items:stretch}.profile-actions .btn,.logout{width:100%;justify-content:center}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="header-spacer" aria-hidden="true"></div>
+  <nav class="nav-pill">
+    <a class="nav-link" href="index.html"><svg class="ui-icon ui-home" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.8V21h13V9.8"/><path d="M9.5 21v-6h5v6"/></svg>Главная</a>
+    <a class="nav-link" href="overview.html"><svg class="ui-icon ui-grid" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>Обзор</a>
+    <a class="nav-link" href="pricing.html"><svg class="ui-icon ui-card" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9h18"/><path d="M7 14h4"/></svg>Цены</a>
+    <a class="nav-link" href="faq.html"><svg class="ui-icon ui-question" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.7 9.2a2.7 2.7 0 1 1 4.1 2.3c-1.2.7-1.8 1.2-1.8 2.6"/><path d="M12 17.2h.01"/></svg>FAQ</a>
+    <a class="nav-link" href="media.html"><svg class="ui-icon ui-media" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.4"/><path d="m4 17-5 5 3.5 3 2.5-2.5 5 4.5"/></svg>Медиа</a>
+  </nav>
+  <div class="top-actions">
+    <button class="icon-btn" id="themeToggle" aria-label="Переключить тему">
+      <svg class="ui-icon ui-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+    </button>
+    <a class="btn btn-light" href="timofeentuzguard.html"><svg class="ui-icon ui-login" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h6v14h-6"/><path d="m11 8-4 4 4 4"/><path d="M7 12h10"/></svg>Профиль</a>
+  </div>
+</header>
+
+<main class="main profile-page">
+  <section class="profile-wrap">
+    <div class="profile-head">
+      <span class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</span>
+      <h1>Добро пожаловать, <span id="displayUsername">Пользователь</span></h1>
+      <p>Данные вашей подписки и доступ к лаунчеру.</p>
+    </div>
+
+    <div class="card profile-card">
+      <div class="profile-row"><span class="profile-label">Логин</span><strong class="profile-value" id="profileUsername">—</strong></div>
+      <div class="profile-row"><span class="profile-label">Подписка действует до</span><strong class="profile-value" id="profileExpiry">—</strong></div>
+      <div class="profile-row"><span class="profile-label">Осталось</span><strong class="profile-value" id="profileDaysLeft">—</strong></div>
+
+      <div class="profile-actions">
+        <a class="btn btn-primary" href="#versions">Версии VoidWare</a>
+        <button class="logout" id="logoutBtn" type="button">Выйти</button>
+      </div>
+    </div>
+    <div class="profile-note">Для входа используется локальная сессия этого браузера.</div>
+  </section>
+
+  <section class="profile-wrap profile-versions" id="versions">
+    <div class="profile-head profile-versions-head">
+      <span class="eyebrow">СКАЧИВАНИЕ</span>
+      <h2>Выберите версию</h2>
+      <p>Доступ к версиям клиента находится внутри личного кабинета.</p>
+    </div>
+    <div class="version-list">
+      <article class="card version-item">
+        <div><strong>26.2</strong><span class="badge">ПОСЛЕДНЯЯ</span><p>Основная поддерживаемая сборка VoidWare</p></div>
+        <button class="btn btn-primary version-download" type="button" data-version="26.2">Скачать</button>
+      </article>
+      <article class="card version-item">
+        <div><strong>1.21.11</strong><p>Поддерживаемая сборка VoidWare</p></div>
+        <button class="btn btn-ghost version-download" type="button" data-version="1.21.11">Скачать</button>
+      </article>
+      <article class="card version-item">
+        <div><strong>1.21.8</strong><p>Поддерживаемая сборка VoidWare</p></div>
+        <button class="btn btn-ghost version-download" type="button" data-version="1.21.8">Скачать</button>
+      </article>
+      <article class="card version-item">
+        <div><strong>1.20.6</strong><p>Поддерживаемая сборка VoidWare</p></div>
+        <button class="btn btn-ghost version-download" type="button" data-version="1.20.6">Скачать</button>
+      </article>
+      <article class="card version-item">
+        <div><strong>1.19.4</strong><p>Поддерживаемая сборка VoidWare</p></div>
+        <button class="btn btn-ghost version-download" type="button" data-version="1.19.4">Скачать</button>
+      </article>
+      <article class="card version-item">
+        <div><strong>1.16.5</strong><p>Поддерживаемая сборка VoidWare</p></div>
+        <button class="btn btn-ghost version-download" type="button" data-version="1.16.5">Скачать</button>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-brand"><div class="footer-logo"><img src="assets/logo.png" alt=""><strong>VoidWare</strong></div><p>Лёгкий клиент. Чистый интерфейс. Свобода настроек.</p></div>
+    <div class="footer-col"><b>Продукт</b><a href="overview.html">Возможности</a><a href="pricing.html">Цены</a><a href="media.html">Статус</a></div>
+    <div class="footer-col"><b>Поддержка</b><a href="faq.html">FAQ</a><a href="overview.html">Руководства</a><a href="mailto:support@voidware.example">Связаться с нами</a></div>
+    <div class="footer-col"><b>Правовая информация</b><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Условия использования</a></div>
+    <div class="footer-col"><b>Сообщество</b><a href="https://t.me/VoidWareDlc" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 VoidWare. Все права защищены.</span><span></span></div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+(() => {
+  const KEY = 'voidware_user';
+  const login = 'login.html';
+  const raw = localStorage.getItem(KEY);
+
+  if (!raw) {
+    location.replace(login);
+    return;
+  }
+
+  let user;
+  try {
+    user = JSON.parse(raw);
+  } catch (_) {
+    localStorage.removeItem(KEY);
+    location.replace(login);
+    return;
+  }
+
+  if (!user || typeof user.username !== 'string' || !user.username.trim() ||
+      typeof user.expiry !== 'string' || Number.isNaN(new Date(user.expiry).getTime())) {
+    localStorage.removeItem(KEY);
+    location.replace(login);
+    return;
+  }
+
+  const expiry = new Date(user.expiry);
+  const now = new Date();
+  const username = user.username.trim();
+
+  document.getElementById('displayUsername').textContent = username;
+  document.getElementById('profileUsername').textContent = username;
+  document.getElementById('profileExpiry').textContent =
+    expiry.toLocaleDateString('ru-RU', {year:'numeric', month:'long', day:'numeric'});
+
+  if (expiry.getFullYear() >= 2099) {
+    document.getElementById('profileDaysLeft').textContent = 'Бессрочно';
+  } else {
+    const days = Math.ceil((expiry.getTime() - now.getTime()) / 86400000);
+    document.getElementById('profileDaysLeft').textContent =
+      days < 0 ? 'Подписка истекла' : `${days} дн.`;
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem(KEY);
+    location.replace(login);
+  });
+})();
+</script>
+</body>
+</html>
