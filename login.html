@@ -91,76 +91,28 @@
   const KEY = 'voidware_user';
   try {
     const current = JSON.parse(localStorage.getItem(KEY) || 'null');
-    if (current && typeof current.username === 'string' && current.username.trim()) {
-      location.replace('timofeentuzguard.html');
-      return;
-    }
+    if (current && typeof current.username === 'string' && current.username.trim()) { location.replace('timofeentuzguard.html'); return; }
   } catch (_) { localStorage.removeItem(KEY); }
 
   const form = document.getElementById('loginForm');
   const error = document.getElementById('errorMessage');
   const button = document.getElementById('loginBtn');
 
-  const loadFile = async (url) => {
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error('Не удалось загрузить данные авторизации.');
-    return (await res.text()).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
-  };
-
   form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    error.style.display = 'none';
-    error.textContent = '';
-
+    e.preventDefault(); error.style.display = 'none'; error.textContent = '';
     const username = document.getElementById('loginUsername').value.trim();
     const password = document.getElementById('loginPassword').value;
     const key = document.getElementById('loginKey').value.trim();
-
-    if (!username || !password || !key) {
-      error.textContent = 'Заполните все поля.';
-      error.style.display = 'block';
-      return;
-    }
-
+    if (!username || !password || !key) { error.textContent = 'Заполните все поля.'; error.style.display = 'block'; return; }
     button.classList.add('loading');
-
     try {
-      const users = await loadFile('fucktuzguard.txt');
-      const validUser = users.some(line => {
-        const parts = line.split(/\s+/);
-        return parts.length >= 2 && parts[0] === username && parts.slice(1).join(' ') === password;
-      });
-      if (!validUser) throw new Error('Неверный логин или пароль.');
-
-      const keys = await loadFile('timofeebtuzguardebeal.txt');
-      let expiry = null;
-
-      for (const line of keys) {
-        const parts = line.split(/\s+/);
-        if (parts.length >= 2 && parts[0] === key) {
-          const dateText = parts.slice(1).join(' ');
-          const parsed = new Date(dateText);
-          if (Number.isNaN(parsed.getTime())) throw new Error('У ключа указана некорректная дата.');
-          expiry = parsed.toISOString();
-          break;
-        }
-      }
-
-      if (!expiry) throw new Error('Неверный ключ активации.');
-
-      localStorage.setItem(KEY, JSON.stringify({
-        username,
-        expiry,
-        loggedAt: new Date().toISOString()
-      }));
-
+      const response = await fetch('/api/login', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'same-origin', cache:'no-store', body:JSON.stringify({username,password,key}) });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.success) throw new Error(data.error || 'Не удалось выполнить вход.');
+      localStorage.setItem(KEY, JSON.stringify({ username:data.username, expiry:data.expiry, loggedAt:new Date().toISOString() }));
       location.replace('timofeentuzguard.html');
-    } catch (err) {
-      error.textContent = err.message || 'Ошибка при входе.';
-      error.style.display = 'block';
-    } finally {
-      button.classList.remove('loading');
-    }
+    } catch (err) { error.textContent = err.message || 'Ошибка при входе.'; error.style.display = 'block'; }
+    finally { button.classList.remove('loading'); }
   });
 })();
 </script>
