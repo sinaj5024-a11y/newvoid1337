@@ -9,11 +9,11 @@
   <style>
     .auth-page{min-height:calc(100vh - 90px);display:grid;place-items:center;padding:110px 20px 80px}
     .auth-wrap{width:min(460px,100%)}
-    .auth-card{padding:32px;border:1px solid var(--border,rgba(255,255,255,.1));background:var(--card,rgba(255,255,255,.035));border-radius:22px;box-shadow:0 20px 70px rgba(0,0,0,.22)}
+    .auth-card{padding:32px;border:1px solid var(--line);background:var(--card);border-radius:22px;box-shadow:0 20px 70px rgba(0,0,0,.22)}
     .auth-card h1{margin:8px 0 10px;font-size:32px;letter-spacing:-.04em}
     .auth-card>p{margin:0 0 26px;color:var(--muted,#9293a1);line-height:1.6}
     .auth-label{display:block;margin:0 0 8px;font-size:13px;font-weight:700;color:var(--text,#f4f4f7)}
-    .auth-field{width:100%;height:48px;padding:0 14px;border-radius:13px;border:1px solid var(--border,rgba(255,255,255,.1));background:rgba(255,255,255,.035);color:inherit;outline:none;font:inherit;transition:.2s}
+    .auth-field{width:100%;height:48px;padding:0 14px;border-radius:13px;border:1px solid var(--line);background:var(--card);color:var(--text);outline:none;font:inherit;transition:.2s}
     .auth-field:focus{border-color:rgba(143,137,224,.7);box-shadow:0 0 0 4px rgba(143,137,224,.11)}
     .auth-field::placeholder{color:#696a76}
     .auth-error{display:none;margin:14px 0 0;padding:12px 14px;border-radius:13px;color:#ff9c9c;background:rgba(255,70,70,.08);border:1px solid rgba(255,70,70,.18);font-size:13px;line-height:1.45}
@@ -27,22 +27,7 @@
   </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="header-spacer" aria-hidden="true"></div>
-  <nav class="nav-pill">
-    <a class="nav-link" href="index.html"><svg class="ui-icon ui-home" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.8V21h13V9.8"/><path d="M9.5 21v-6h5v6"/></svg>Главная</a>
-    <a class="nav-link" href="overview.html"><svg class="ui-icon ui-grid" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>Обзор</a>
-    <a class="nav-link" href="pricing.html"><svg class="ui-icon ui-card" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9h18"/><path d="M7 14h4"/></svg>Цены</a>
-    <a class="nav-link" href="faq.html"><svg class="ui-icon ui-question" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.7 9.2a2.7 2.7 0 1 1 4.1 2.3c-1.2.7-1.8 1.2-1.8 2.6"/><path d="M12 17.2h.01"/></svg>FAQ</a>
-    <a class="nav-link" href="media.html"><svg class="ui-icon ui-media" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.4"/><path d="m4 17 5-5 3.5 3 2.5-2.5 5 4.5"/></svg>Медиа</a>
-  </nav>
-  <div class="top-actions">
-    <button class="icon-btn" id="themeToggle" aria-label="Переключить тему">
-      <svg class="ui-icon ui-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
-    </button>
-    <a class="btn btn-light" href="login.html" aria-current="page"><svg class="ui-icon ui-login" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h6v14h-6"/><path d="m11 8-4 4 4 4"/><path d="M7 12h10"/></svg>Войти</a>
-  </div>
-</header>
+<header class="topbar"><div class="header-spacer" aria-hidden="true"></div><nav class="nav-pill"><a class="nav-link active" href="index.html"><svg class="ui-icon ui-home" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.8V21h13V9.8"/><path d="M9.5 21v-6h5v6"/></svg> Главная</a><a class="nav-link " href="overview.html"><svg class="ui-icon ui-grid" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg> Обзор</a><a class="nav-link " href="pricing.html"><svg class="ui-icon ui-card" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9h18"/><path d="M7 14h4"/></svg> Цены</a><a class="nav-link " href="faq.html"><svg class="ui-icon ui-question" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9.7 9.2a2.7 2.7 0 1 1 4.1 2.3c-1.2.7-1.8 1.2-1.8 2.6"/><path d="M12 17.2h.01"/></svg> FAQ</a><a class="nav-link " href="media.html"><svg class="ui-icon ui-media" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.4"/><path d="m4 17 5-5 3.5 3 2.5-2.5 5 4.5"/></svg> Медиа</a></nav><div class="top-actions"><button class="icon-btn" id="themeToggle" aria-label="Переключить тему"><svg class="ui-icon ui-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg></button><a class="btn btn-light" href="login.html"><svg class="ui-icon ui-login" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 5h6v14h-6"/><path d="m11 8-4 4 4 4"/><path d="M7 12h10"/></svg>Войти</a></div></header>
 
 <main class="main auth-page">
   <section class="auth-wrap">
@@ -74,16 +59,7 @@
   </section>
 </main>
 
-<footer class="footer">
-  <div class="footer-main">
-    <div class="footer-brand"><div class="footer-logo"><img src="assets/logo.png" alt=""><strong>VoidWare</strong></div><p>Лёгкий клиент. Чистый интерфейс. Свобода настроек.</p></div>
-    <div class="footer-col"><b>Продукт</b><a href="overview.html">Возможности</a><a href="pricing.html">Цены</a><a href="media.html">Статус</a></div>
-    <div class="footer-col"><b>Поддержка</b><a href="faq.html">FAQ</a><a href="overview.html">Руководства</a><a href="mailto:support@voidware.example">Связаться с нами</a></div>
-    <div class="footer-col"><b>Правовая информация</b><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Условия использования</a></div>
-    <div class="footer-col"><b>Сообщество</b><a href="https://t.me/VoidWareDlc" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord</a></div>
-  </div>
-  <div class="footer-bottom"><span>© 2026 VoidWare. Все права защищены.</span><span></span></div>
-</footer>
+<footer class="footer"><div class="footer-main"><div class="footer-brand"><div class="footer-logo"><img src="assets/logo.png" alt="Логотип VoidWare"><strong>VoidWare</strong></div><p>Лёгкий чит. Чистый интерфейс. Свобода настроек.</p></div><div class="footer-col"><b>Продукт</b><a href="overview.html">Возможности</a><a href="pricing.html">Цены</a><a href="media.html">Статус</a></div><div class="footer-col"><b>Поддержка</b><a href="faq.html">FAQ</a><a href="overview.html">Руководства</a><a href="mailto:voidware@vk.com">Связаться с нами</a></div><div class="footer-col"><b>Правовая информация</b><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Условия использования</a></div><div class="footer-col"><b>Сообщество</b><a href="https://t.me/VoidWareDlc" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://discord.com/" target="_blank">Discord</a></div></div><div class="footer-bottom"><span>© 2026 VoidWare. Все права защищены.</span><span></span></div></footer>
 
 <script src="app.js"></script>
 <script>
