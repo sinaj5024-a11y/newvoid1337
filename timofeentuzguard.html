@@ -24,18 +24,25 @@
     .profile-versions{margin-top:72px}
     .profile-versions-head{margin-bottom:28px}
     .profile-versions-head h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.04em;margin:8px 0 10px}
-    .version-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-    .version-item{padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .version-item strong{font-size:20px;letter-spacing:-.02em}
-    .version-item p{margin:6px 0 0;color:var(--muted,#9293a1);font-size:13px}
-    .version-item .badge{margin-left:9px;vertical-align:middle}
-    .version-download{white-space:nowrap}
-    @media(max-width:700px){.version-list{grid-template-columns:1fr}.version-item{align-items:flex-start;flex-direction:column}.version-download{width:100%;justify-content:center}}
+    .version-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
+    .version-item{height:148px;min-height:148px;box-sizing:border-box;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .version-item>div:first-child{min-width:0}
+    .version-title{display:flex;align-items:center;gap:8px;min-height:26px}
+    .version-item strong{font-size:20px;letter-spacing:-.02em;line-height:1.2}
+    .version-item p{margin:7px 0 0;color:var(--muted,#9293a1);font-size:13px;line-height:1.45}
+    .version-item .badge{margin:0;white-space:nowrap;line-height:1}
+    .version-status{font-weight:700}
+    .version-status.unavailable{color:#9a6262}
+    .version-status.closed{color:#85858f}
+    .version-download{white-space:nowrap;flex:0 0 auto}
+    .version-download:disabled{opacity:.55;cursor:not-allowed}
+    @media(max-width:700px){.version-list{grid-template-columns:1fr}.version-item{height:148px;min-height:148px;align-items:center;flex-direction:row}.version-download{width:auto;justify-content:center}}
+    @media(max-width:520px){.version-item{padding:20px}.version-item p{max-width:190px}}
     @media(max-width:600px){.profile-card{padding:22px}.profile-row{align-items:flex-start;flex-direction:column;gap:7px}.profile-value{text-align:left}.profile-actions{flex-direction:column;align-items:stretch}.profile-actions .btn,.logout{width:100%;justify-content:center}}
   </style>
 </head>
 <body>
-<header class="topbar"><div class="header-spacer" aria-hidden="true"></div><nav class="nav-pill"><a class="nav-link active" href="index.html"><svg class="ui-icon ui-home" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.8V21h13V9.8"/><path d="M9.5 21v-6h5v6"/></svg> Главная</a><a class="nav-link " href="overview.html"><svg class="ui-icon ui-grid" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg> Обзор</a><a class="nav-link " href="pricing.html"><svg class="ui-icon ui-card" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9h18"/><path d="M7 14h4"/></svg> Цены</a><a class="nav-link " href="faq.html"><svg class="ui-icon ui-question" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9.7 9.2a2.7 2.7 0 1 1 4.1 2.3c-1.2.7-1.8 1.2-1.8 2.6"/><path d="M12 17.2h.01"/></svg> FAQ</a><a class="nav-link " href="media.html"><svg class="ui-icon ui-media" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.4"/><path d="m4 17 5-5 3.5 3 2.5-2.5 5 4.5"/></svg> Медиа</a></nav><div class="top-actions"><button class="icon-btn" id="themeToggle" aria-label="Переключить тему"><svg class="ui-icon ui-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg></button><a class="btn btn-light" href="login.html"><svg class="ui-icon ui-login" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 5h6v14h-6"/><path d="m11 8-4 4 4 4"/><path d="M7 12h10"/></svg>Войти</a></div></header>
+<header class="topbar"><div class="header-spacer" aria-hidden="true"></div><nav class="nav-pill"><a class="nav-link" href="index.html"><svg class="ui-icon ui-home" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.8V21h13V9.8"/><path d="M9.5 21v-6h5v6"/></svg> Главная</a><a class="nav-link " href="overview.html"><svg class="ui-icon ui-grid" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg> Обзор</a><a class="nav-link " href="pricing.html"><svg class="ui-icon ui-card" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9h18"/><path d="M7 14h4"/></svg> Цены</a><a class="nav-link " href="faq.html"><svg class="ui-icon ui-question" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9.7 9.2a2.7 2.7 0 1 1 4.1 2.3c-1.2.7-1.8 1.2-1.8 2.6"/><path d="M12 17.2h.01"/></svg> FAQ</a><a class="nav-link " href="media.html"><svg class="ui-icon ui-media" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.4"/><path d="m4 17 5-5 3.5 3 2.5-2.5 5 4.5"/></svg> Медиа</a></nav><div class="top-actions"><button class="icon-btn" id="themeToggle" aria-label="Переключить тему"><svg class="ui-icon ui-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg></button><a class="btn btn-light" href="login.html"><svg class="ui-icon ui-login" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 5h6v14h-6"/><path d="m11 8-4 4 4 4"/><path d="M7 12h10"/></svg>Войти</a></div></header>
 
 <main class="main profile-page">
   <section class="profile-wrap">
@@ -66,28 +73,35 @@
     </div>
     <div class="version-list">
       <article class="card version-item">
-        <div><strong>26.2</strong><span class="badge">ПОСЛЕДНЯЯ</span><p>Основная поддерживаемая сборка VoidWare</p></div>
-        <button class="btn btn-primary version-download" type="button" data-version="26.2">Скачать</button>
+        <div>
+          <div class="version-title"><strong>26.2</strong><span class="badge">ПОСЛЕДНЯЯ</span></div>
+          <p>Основная поддерживаемая сборка VoidWare</p>
+        </div>
+        <button class="btn btn-primary version-download" type="button" data-version="26.2" disabled>Скачать</button>
       </article>
+
       <article class="card version-item">
-        <div><strong>1.21.11</strong><p>Поддерживаемая сборка VoidWare</p></div>
-        <button class="btn btn-ghost version-download" type="button" data-version="1.21.11">Скачать</button>
+        <div>
+          <div class="version-title"><strong>1.21.11</strong></div>
+          <p class="version-status unavailable">Временно не работает</p>
+        </div>
+        <button class="btn btn-ghost version-download" type="button" disabled>Недоступно</button>
       </article>
+
       <article class="card version-item">
-        <div><strong>1.21.8</strong><p>Поддерживаемая сборка VoidWare</p></div>
-        <button class="btn btn-ghost version-download" type="button" data-version="1.21.8">Скачать</button>
+        <div>
+          <div class="version-title"><strong>1.16.2</strong></div>
+          <p class="version-status closed">Закрыта</p>
+        </div>
+        <button class="btn btn-ghost version-download" type="button" disabled>Закрыто</button>
       </article>
+
       <article class="card version-item">
-        <div><strong>1.20.6</strong><p>Поддерживаемая сборка VoidWare</p></div>
-        <button class="btn btn-ghost version-download" type="button" data-version="1.20.6">Скачать</button>
-      </article>
-      <article class="card version-item">
-        <div><strong>1.19.4</strong><p>Поддерживаемая сборка VoidWare</p></div>
-        <button class="btn btn-ghost version-download" type="button" data-version="1.19.4">Скачать</button>
-      </article>
-      <article class="card version-item">
-        <div><strong>1.16.5</strong><p>Поддерживаемая сборка VoidWare</p></div>
-        <button class="btn btn-ghost version-download" type="button" data-version="1.16.5">Скачать</button>
+        <div>
+          <div class="version-title"><strong>1.16.5</strong></div>
+          <p>Бесплатная версия</p>
+        </div>
+        <a class="btn btn-ghost version-download" href="https://www.dropbox.com/scl/fi/wtii35rpalrqywosro72h/FrostLineFree.zip?rlkey=lihpjxhcq3m5m806b5b6htufy&amp;st=vapxyrrv&amp;dl=1" target="_blank" rel="noopener noreferrer">Скачать</a>
       </article>
     </div>
   </section>
