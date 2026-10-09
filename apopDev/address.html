@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Наш адрес — Матрас Маркет</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Manrope:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#fff;--bg2:#fff;--ink:#1d1814;--mute:#6f655c;--or:#ff6a13;--or2:#ffb27a;--soft:#ffeadb;--line:#f0e4d9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{color-scheme:light}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:Unbounded,Manrope,sans-serif;font-weight:500;line-height:1.15;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--or);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:88px 0}
+h2{font-size:clamp(26px,4.4vw,42px);max-width:16ch}
+.sub{color:var(--mute);max-width:52ch;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:99px;background:var(--or);color:#fff;font-weight:700;border:0;cursor:pointer;font-size:16px;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--or)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--or)}
+
+.pic{height:150px;border-radius:18px;background:linear-gradient(160deg,#fff3e9,#ffe0c9);display:grid;place-items:center;overflow:hidden;margin-bottom:6px}
+.pic svg{width:86%;height:auto;transition:transform .5s}
+.card:hover .pic svg{transform:scale(1.08) translateY(-4px)}
+/* header */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-size:17px}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--or);position:relative;display:block}
+.logo i::after{content:"";position:absolute;inset:8px 6px;border-radius:3px;background:#fff;box-shadow:0 -5px 0 -1px rgba(255,255,255,.5)}
+nav ul{display:flex;gap:30px;list-style:none;padding:0;font-weight:500}
+nav a{position:relative;padding:6px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--or);transition:width .3s}
+nav a:hover::after{width:100%}
+.tel{font-weight:700}
+.burger{display:none;width:44px;height:44px;border:0;background:var(--soft);border-radius:12px;cursor:pointer;position:relative}
+.burger span,.burger::before,.burger::after{content:"";position:absolute;left:12px;right:12px;height:2px;background:var(--or);border-radius:2px;transition:.3s}
+.burger::before{top:15px}.burger span{top:21px}.burger::after{top:27px}
+.burger.on::before{top:21px;transform:rotate(45deg)}.burger.on::after{top:21px;transform:rotate(-45deg)}.burger.on span{opacity:0}
+
+/* hero */
+.hero{padding:56px 0 72px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,6.2vw,64px)}
+.hero h1 b{color:var(--or);font-weight:600}
+.hero p{margin:22px 0 32px;color:var(--mute);font-size:18px;max-width:46ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.facts{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+.facts div{font-size:14px;color:var(--mute)}
+.facts strong{display:block;font:500 28px Unbounded,sans-serif;color:var(--ink)}
+.blob{position:absolute;right:-120px;top:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,var(--soft),transparent 68%);animation:pulse 8s ease-in-out infinite;z-index:-1}
+@keyframes pulse{50%{transform:scale(1.15)}}
+.stage{height:440px;perspective:1100px;display:grid;place-items:center}
+.stack{position:relative;width:300px;height:300px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-34deg);animation:spin 14s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotateX(58deg) rotateZ(-14deg)}}
+.layer{position:absolute;inset:0;border-radius:26px;animation:float 5s ease-in-out infinite;display:grid;place-items:center;color:#fff;font:700 13px Manrope}
+.l4{background:#3a2a20;--z:0px;animation-delay:0s}
+.l3{background:repeating-radial-gradient(circle at 12px 12px,#ffb27a 0 3px,#ff8a3d 3px 7px,#ffd9bd 7px 24px);--z:46px;animation-delay:.3s}
+.l2{background:#ffd7b8;--z:88px;animation-delay:.6s}
+.l1{background:linear-gradient(135deg,#ff7a2b,#ff5a00);--z:130px;animation-delay:.9s;box-shadow:inset 0 0 0 6px rgba(255,255,255,.18),0 30px 40px -10px rgba(255,90,0,.45)}
+.l1::before{content:"";position:absolute;inset:14px;border-radius:18px;background:repeating-linear-gradient(45deg,rgba(255,255,255,.22) 0 2px,transparent 2px 34px),repeating-linear-gradient(-45deg,rgba(255,255,255,.22) 0 2px,transparent 2px 34px)}
+@keyframes float{0%,100%{transform:translateZ(var(--z))}50%{transform:translateZ(calc(var(--z) + 26px))}}
+.tags{position:absolute;right:0;display:grid;gap:14px;font-size:13px;font-weight:700}
+.stage{position:relative}
+.tag{background:var(--bg2);border:1px solid var(--line);padding:8px 14px;border-radius:99px;box-shadow:0 8px 20px -10px rgba(0,0,0,.25);animation:bob 4s ease-in-out infinite;white-space:nowrap}
+.tag:nth-child(2){animation-delay:1s;margin-left:-24px}.tag:nth-child(3){animation-delay:2s}.tag:nth-child(4){animation-delay:1.5s;margin-left:-24px}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.tags{top:50%;transform:translateY(-50%)}
+
+/* marquee */
+.marq{background:var(--or);color:#fff;overflow:hidden;padding:16px 0;font:500 16px Unbounded,sans-serif;white-space:nowrap}
+.marq div{display:inline-block;animation:slide 30s linear infinite}
+.marq span{margin:0 26px}.marq span::after{content:"✦";margin-left:52px;opacity:.6}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* catalog */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:26px;padding:26px 22px;display:flex;flex-direction:column;gap:10px;transition:transform .35s,border-color .35s,box-shadow .35s}
+.card:hover{transform:translateY(-8px);border-color:var(--or);box-shadow:0 22px 40px -22px var(--or)}
+.ico{width:64px;height:64px;border-radius:20px;background:var(--soft);display:grid;place-items:center;font-size:30px;transition:transform .4s}
+.card:hover .ico{transform:rotate(-8deg) scale(1.1)}
+.card h3{font-size:17px;margin-top:8px}
+.card p{color:var(--mute);font-size:15px;flex:1}
+.price{font-weight:700;color:var(--or)}
+
+/* why */
+.why{background:var(--soft)}
+.why .grid{grid-template-columns:repeat(3,1fr)}
+.why .card{background:var(--bg2);border-color:transparent}
+.big{font:600 40px Unbounded,sans-serif;color:var(--or)}
+
+/* reviews */
+.rev .grid{grid-template-columns:repeat(3,1fr)}
+.stars{color:var(--or);letter-spacing:3px}
+.who{font-weight:700;margin-top:6px}
+
+/* cta */
+.final{padding:0 0 88px}
+.box{background:var(--or);color:#fff;border-radius:36px;padding:56px 40px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.box::before,.box::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.12);animation:pulse 9s ease-in-out infinite}
+.box::before{width:340px;height:340px;right:-90px;top:-120px}.box::after{width:200px;height:200px;left:40%;bottom:-120px;animation-delay:2s}
+.box h2{max-width:none;position:relative}
+.box p{margin-top:12px;opacity:.9;position:relative}
+.form{display:grid;gap:12px;position:relative}
+.form input{padding:16px 20px;border-radius:99px;border:0;font:500 16px Manrope;background:#fff;color:#1d1814;width:100%}
+.form .btn{background:#1d1814;justify-content:center}
+.ok{display:none;font-weight:700}
+
+/* footer */
+footer{background:var(--soft);color:var(--ink);padding:64px 0 32px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
+footer h4{font:500 15px Unbounded,sans-serif;color:var(--ink);margin-bottom:14px}
+footer ul{list-style:none;padding:0;display:grid;gap:9px;font-size:15px;color:var(--mute)}
+footer li a:hover{color:var(--or)}
+footer .logo{color:var(--ink);margin-bottom:14px}
+.copy{border-top:1px solid #f3d3bb;margin-top:44px;padding-top:22px;font-size:14px;color:var(--mute);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+ section{padding:64px 0}
+ .hero .wrap,.box{grid-template-columns:1fr}
+ .stage{height:360px}.stack{width:230px;height:230px}.tags{display:none}
+ .grid,.why .grid,.rev .grid{grid-template-columns:repeat(2,1fr)}
+ .fgrid{grid-template-columns:1fr 1fr}
+ .burger{display:block}.tel{display:none}
+ nav{position:absolute;left:0;right:0;top:68px;background:var(--bg);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .4s}
+ nav.open{max-height:320px}
+ nav ul{flex-direction:column;gap:0;padding:8px 20px 18px}
+ nav a{display:block;padding:14px 0;font-size:18px}
+}
+@media(max-width:560px){
+ .grid,.why .grid,.rev .grid{grid-template-columns:1fr}
+ .fgrid{grid-template-columns:1fr}
+ .box{padding:40px 24px;border-radius:28px}
+ .cta .btn{flex:1;justify-content:center}
+ .facts{gap:22px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+.logo img{display:block;width:38px;height:38px;object-fit:contain;border-radius:9px}
+.logo .brand-name{display:inline-block}
+.page-hero{padding:76px 0 42px;background:linear-gradient(135deg,#fff7f0,#fff)}
+.page-hero h1{font-size:clamp(34px,5vw,54px);max-width:18ch}
+.page-content{padding:32px 0 88px}
+.page-panel{border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4vw,42px);background:#fff}
+.page-content p{color:var(--mute);margin:0 0 16px}
+.address-card{background:var(--soft);border-radius:22px;padding:26px;margin-top:24px}
+.news-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:26px}
+.news-item{border:1px solid var(--line);border-radius:22px;padding:24px;background:#fff}
+.news-item .date{font-size:13px;color:var(--or);font-weight:700;margin-bottom:10px}
+footer .footer-logo{width:128px;height:auto;max-height:62px;object-fit:contain;object-position:left center;display:block;margin-bottom:14px}
+.copy .credit{width:100%;text-align:right;font-size:12px;letter-spacing:.04em}
+@media(max-width:560px){.news-list{grid-template-columns:1fr}.copy .credit{text-align:left}}
+
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap bar">
+  <a href="index.html" class="logo"><img src="assets/logo.png" alt="Логотип Матрас Маркет"><span class="brand-name">Матрас Маркет</span></a>
+  <nav id="nav"><ul>
+    <li><a href="about.html">О компании</a></li>
+    <li><a href="news.html">Новости</a></li>
+    <li><a href="address.html">Наш адрес</a></li>
+    <li><a href="index.html#catalog">Каталог</a></li>
+   </ul></nav>
+   <a class="tel" href="tel:+73452940212">94-02-12</a>
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
+ </div>
+</header>
+
+
+<main>
+<section class="page-hero"><div class="wrap"><p class="sub">Матрас Маркет · Тюмень</p><h1>Наш адрес</h1><p class="sub">Приходите — поможем подобрать матрас и мебель для спальни.</p></div></section>
+<section class="page-content"><div class="wrap"><div class="page-panel">
+<h2>Ждём вас в магазине</h2>
+<div class="address-card"><p><strong>Адрес</strong><br>г. Тюмень, улица 70 лет Победы, 7/5<br>ТЦ «Новый Магнат», 1 этаж</p>
+<p><strong>Телефон</strong><br><a href="tel:+73452940212">94-02-12</a></p>
+<p><strong>Как найти</strong><br>Мы находимся на первом этаже торгового центра «Новый Магнат».</p>
+<a class="btn" href="tel:+73452940212">Позвонить</a>
+</div>
+<p style="margin-top:22px">Перед поездкой можно позвонить и уточнить наличие нужной модели.</p>
+</div></div></section>
+</main><footer>
+ <div class="wrap">
+  <div class="fgrid">
+   <div><a href="index.html" class="logo"><img class="footer-logo" src="assets/logo.png" alt="Матрас Маркет"></a><p style="color:var(--mute);max-width:30ch;font-size:15px">Качественные матрасы и мебель для спокойного сна.</p></div>
+   <div><h4>Разделы</h4><ul><li><a href="about.html">О компании</a></li><li><a href="news.html">Новости</a></li><li><a href="address.html">Наш адрес</a></li><li><a href="index.html#catalog">Каталог</a></li></ul></div>
+   <div><h4>Покупателям</h4><ul><li><a href="index.html#why">Почему мы</a></li><li><a href="index.html#reviews">Отзывы</a></li><li><a href="index.html#contact">Заказать звонок</a></li></ul></div>
+   <div><h4>Контакты</h4><ul><li><a href="tel:+73452940212">94-02-12</a></li><li>г. Тюмень, ул. 70 лет Победы, 7/5</li><li>ТЦ «Новый Магнат», 1 этаж</li></ul></div>
+  </div>
+  <div class="copy"><span>© 2026 Матрас Маркет. Все права защищены.</span><span><a href="address.html">Адрес и контакты</a></span><span class="credit">by apopDev</span></div>
+ </div>
+</footer>
+
+
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+if(b&&n){b.onclick=()=>{const o=n.classList.toggle('open');b.classList.toggle('on',o);b.setAttribute('aria-expanded',o)};
+n.querySelectorAll('a').forEach(a=>a.onclick=()=>{n.classList.remove('open');b.classList.remove('on');});}
+const io = ('IntersectionObserver' in window) ? new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12}) : null;
+if(io) document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+</script>
+</body>
+</html>
